@@ -19,10 +19,10 @@ RUN ./rustup-installer.sh -y
 RUN $HOME/.cargo/bin/rustup install stable
 RUN rm -rf rustup-installer.sh
 # source the cargo environment - don't need to do this for interactive run since the bashrc will have the lines
-RUN source ~/.cargo/env
+RUN source $HOME/.cargo/env
 # install packer for nvim
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+ $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 # copy nvim configs
-COPY nvim ~/.config/nvim
+COPY nvim .config/nvim
 CMD ["yes"]
