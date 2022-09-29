@@ -2,7 +2,12 @@ FROM ubuntu:22.04
 # setup the shell so that it uses bash and not /bin/sh
 SHELL ["/bin/bash", "-c"]
 # Install dependencies
-RUN apt-get update -qqq && apt-get install -y wget git build-essential curl bash
+RUN apt-get clean && apt-get update -qqq && apt-get install -y wget git build-essential curl bash locales
+# setup locale
+# Ensure UTF-8 locale
+COPY locale /etc/default/locale
+RUN locale-gen en_US.UTF-8 &&\
+  DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 # install neovim 0.7.2 
 RUN wget -q https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb && echo 'dce77cae95c2c115e43159169e2d2faaf93bce6862d5adad7262f3aa3cf60df8  nvim-linux64.deb' > /tmp/nvim.txt && sha256sum --check /tmp/nvim.txt
 RUN dpkg -i nvim-linux64.deb
