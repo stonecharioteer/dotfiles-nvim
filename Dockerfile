@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 # setup the shell so that it uses bash and not /bin/sh
 SHELL ["/bin/bash", "-c"]
 # Install dependencies
-RUN apt-get clean && apt-get update -qqq && apt-get install -y wget git build-essential curl bash locales
+RUN apt-get clean && apt-get update -qqq && apt-get install -y wget git build-essential curl bash locales libreadline-dev unzip
 # setup locale
 # Ensure UTF-8 locale
 COPY locale /etc/default/locale
@@ -29,5 +29,6 @@ RUN source $HOME/.cargo/env
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 # copy nvim configs
-COPY nvim .config/nvim
+COPY --chown=ubuntu nvim .config/nvim
+RUN nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
 CMD ["yes"]

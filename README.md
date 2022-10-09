@@ -9,3 +9,7 @@ See [stonecharioteer/distributed-dotfiles] for installation using `ansible`.
    ~/.local/share/nvim/site/pack/packer/start/packer.nvim`.
 3. Launch `neovim` then `:PackerCompile`, restart and `:PackerSync` to install
    all plugins.
+
+## Notes
+For any option, try using `:h <OPTION>` to learn more about what's going on
+in the configs.

@@ -3,6 +3,7 @@
 -- You can `require` anything that's in the `lua` folder.
 require("leader")
 require("basics")
---[[ require("plugins")
+require("plugins")
+--[[ 
 require("options")
 require("keymaps") ]]

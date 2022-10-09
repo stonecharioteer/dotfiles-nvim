@@ -1,0 +1,6 @@
+[something]
+value = 10
+some_string = "hello, there"
+array = [
+10, 20, 30, 40
+]

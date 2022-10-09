@@ -58,7 +58,9 @@ vim.opt.shiftround = true
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.textwidth = 100
-vim.opt.format = vim.o.format .. "t"
+
+-- forgot why I added this here.
+-- vim.opt.format = vim.o.format .. "t"
 
 -- indentline
 vim.g.indent_blankline_setColors = 0
